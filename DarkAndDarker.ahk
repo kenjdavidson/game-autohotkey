@@ -3,7 +3,7 @@
 
 ; Load the HotVoice Library
 ; #include Lib\HotVoice.ahk
-#Include Lib\DarkAndDarkerCommon.ahk
+#Include darkanddarker\DarkAndDarkerCommon.ahk
 
 ; Dark and Darker Hotkeys
 ; Requires DungeonCrawler.exe active
