@@ -16,8 +16,10 @@ MENU_STORE := { x: 1680, y: 30 }
 ; Merchant Locations
 ; TODO - update this to be based on ImageSearch instead of hard coded
 VENDOR_ALCHEMIST := { x: 380, y: 330 }
-VENDOR_SQUIRE := { x: 600, y: 550 }
-VENDOR_SURGEON := { x: 850, y: 600 }
+VENDOR_SQUIRE := { x: 600, y: 375 }
+VENDOR_SURGEON := { x: 600, y: 600 }
+
+; Vendor Screen Locations
 VENDOR_LESS_BTN := { x: 910, y: 600 }
 VENDOR_MORE_BTN := { x: 1010, y: 600 }
 FILL_IN_ALL_STASH_BTN := { x: 960, y: 910 }
@@ -34,14 +36,15 @@ Jumping := false
 JumpCrouch() {
     if Jumping == false {
         global Jumping
+
         Jumping := true
         Send("{Space down}")
-        Sleep(50)
+        Sleep(150)
         Send("{LControl down}")
-        Sleep(400)
+        Sleep(350)
         Send("{LControl up}")
         Send("{Space up}")
-        Sleep(50)
+        Sleep(100)
         Jumping := false
     }
 }

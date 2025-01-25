@@ -15,7 +15,12 @@ $space:: JumpCrouch
 
 ; Purchase health pots and bandages
 ; Currently hardcoded to 3 of each
-f12:: PurchasePotsAndBandages(WHITE_BANDAGE_3, 3, 3)
+f12:: {
+    PurchaseItems(VENDOR_ALCHEMIST, PotType, PotAmount)
+    MoveToAndClick(MENU_ESC)
+    PurchaseItems(VENDOR_SURGEON, BandageType, BandageAmount)
+    MoveToAndClick(MENU_ESC)
+}
 
 ; Show configuration GUi
 ; TODO - save the results to a configuration file
