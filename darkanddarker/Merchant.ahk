@@ -25,35 +25,18 @@ VENDOR_MORE_BTN := { x: 1010, y: 600 }
 FILL_IN_ALL_STASH_BTN := { x: 960, y: 910 }
 MAKE_DEAL_BTN := { x: 960, y: 980 }
 
-; Vendor Item Locations
-GREY_POT_3 := { x: 150, y: 290 }
-WHITE_POT_3 := { x: 190, y: 290 }
-GREY_BANDAGE_3 := { x: 150, y: 290 }
-WHITE_BANDAGE_3 := { x: 190, y: 290 }
-
-; Perform a jump/crouch with a single button
-Jumping := false
-JumpCrouch() {
-    if Jumping == false {
-        global Jumping
-
-        Jumping := true
-        Send("{Space down}")
-        Sleep(150)
-        Send("{LControl down}")
-        Sleep(350)
-        Send("{LControl up}")
-        Send("{Space up}")
-        Sleep(100)
-        Jumping := false
-    }
-}
+; Pot and Bandage Locations
+LOCATION_1 := { x: 75, y: 290 }
+LOCATION_2 := { x: 115, y: 290 }
+LOCATION_3 := { x: 150, y: 290 }
+LOCATION_4 := { x: 190, y: 290 }
+LOCATION_5 := { x: 240, y: 290 }
+LOCATION_6 := { x: 290, y: 290 }
 
 ; SECTION: Purchase Pots
-
-PotType := WHITE_POT_3
+PotType := LOCATION_2
 PotAmount := 3
-BandageType := WHITE_BANDAGE_3
+BandageType := LOCATION_2
 BandageAmount := 3
 
 ; Purchase pots and bandages of a particular type.  At this point the locations of grey/white
@@ -103,10 +86,11 @@ MoveToAndClick(position, click := "left", sleepTime := 250) {
 }
 
 ; Show GUI configuration for Pots and Bandages
-PotSelections := ["Grey 3", "White 3"]
-PotSelectionsValues := [GREY_POT_3, WHITE_POT_3]
-BandageSelections := ["Grey 3", "White 3"]
-BandageSelectionsValues := [GREY_BANDAGE_3, WHITE_BANDAGE_3]
+; The pot locations change based on what you have, so instead
+; we need to pick the location of the pot item.
+PotSelections := ["Slot 1", "Slot 2", "Slot 3", "Slot 4", "Slot 5", "Slot 6"]
+PotSelectionsValues := [LOCATION_1, LOCATION_2, LOCATION_3, LOCATION_4, LOCATION_5, LOCATION_6]
+
 PotAndBandageConfigurationUI() {
     ConfigurationGui := Gui()
     ConfigurationGui.Title := "Pots and Bandages"
@@ -118,8 +102,8 @@ PotAndBandageConfigurationUI() {
     PotAmountInput.Value := PotAmount
 
     ConfigurationGui.AddText("", "Bandage Type")
-    CurrentBandageIndex := "Choose" GetValueIndex(BandageSelectionsValues, BandageType)
-    BandageSelectionInput := ConfigurationGui.AddComboBox(CurrentBandageIndex "w100", BandageSelections)
+    CurrentBandageIndex := "Choose" GetValueIndex(PotSelectionsValues, BandageType)
+    BandageSelectionInput := ConfigurationGui.AddComboBox(CurrentBandageIndex "w100", PotSelections)
     ConfigurationGui.AddText("", "Bandage Amount ")
     BandageAmountInput := ConfigurationGui.AddEdit("Number w100")
     BandageAmountInput.Value := BandageAmount
@@ -140,7 +124,7 @@ OnChangePotAndBandage(NewPotType, NewPotAmount, NewBandageType, NewBandageAmount
 
     PotType := PotSelectionsValues[NewPotType.Value]
     PotAmount := NewPotAmount.Value
-    BandageType := BandageSelectionsValues[NewPotType.Value]
+    BandageType := PotSelectionsValues[newBandageType.Value]
     BandageAmount := NewBandageAmount.Value
 }
 
