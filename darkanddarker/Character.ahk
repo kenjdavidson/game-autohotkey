@@ -14,6 +14,8 @@ SelectCastE(cast) {
     Sleep(50)
     MoveMouseRelative(cast.x, cast.y)
     Send("{e up}")
+    Sleep(50)
+    Send("{WheelDown}")
 }
 
 ; Q select the requested spell
@@ -22,6 +24,8 @@ SelectCastQ(cast) {
     Sleep(50)
     MoveMouseRelative(cast.x, cast.y)
     Send("{q up}")
+    Sleep(50)
+    Send("{WheelDown}")
 }
 
 ; Perform a jump crouch.  This function is a work in progress, it has some quicks
@@ -35,11 +39,11 @@ JumpCrouch() {
     if Jumping == false {
         Jumping := true
         Send("{Space down}")
-        Sleep(50)
-        Send("{Space up}")
+        Sleep(150)
         Send("{LControl down}")
-        Sleep(500)
+        Sleep(350)
         Send("{LControl up}")
+        Send("{Space up}")
 
         Jumping := false
         Sleep(50)
