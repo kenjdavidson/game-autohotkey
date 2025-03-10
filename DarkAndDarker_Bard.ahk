@@ -2,7 +2,6 @@
 #Requires AutoHotkey v2.0
 
 ; Load the HotVoice Library
-; #include Lib\HotVoice.ahk
 #Include darkanddarker\Character.ahk
 #Include darkanddarker\Merchant.ahk
 

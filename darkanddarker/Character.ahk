@@ -36,18 +36,15 @@ Jumping := false
 JumpCrouch() {
     global Jumping
 
-    if Jumping == false {
-        Jumping := true
-        Send("{Space down}")
-        Sleep(150)
-        Send("{LControl down}")
-        Sleep(350)
-        Send("{LControl up}")
-        Send("{Space up}")
-
-        Jumping := false
-        Sleep(50)
-    }
+    Send("{Space down}")
+    Sleep(50)
+    Send("{LControl down}")
+    Sleep(450)
+    Send("{LControl up}")
+    Sleep(5)
+    Send("{Space up}")
+    Sleep(5)
+    Jumping := false
 }
 
 ; Move the mouse by the specified amount, relatively.  Used for casting wheel
