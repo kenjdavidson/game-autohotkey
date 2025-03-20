@@ -20,6 +20,14 @@ f1:: {
 ; Needs a little bit of fine tuning in terms of sleep between clicks
 $space:: JumpCrouch
 
+WheelUp:: {
+    JumpSwitchWeapon("WheelUp")
+}
+
+WheelDown:: {
+    JumpSwitchWeapon("WheelDown")
+}
+
 ; Purchase health pots and bandages
 ; Currently hardcoded to 3 of each
 f12:: {
